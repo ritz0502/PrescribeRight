@@ -35,8 +35,12 @@ except FileNotFoundError:
     treatment_db = {}
 
 # Helper Functions
-def predict_disease(symptoms_str):
-    user_symptoms = [s.strip().replace(' ', '_') for s in symptoms_str.split(',')]
+def predict_disease(symptoms_input):
+    # Handle both string and list inputs
+    if isinstance(symptoms_input, list):
+        user_symptoms = [s.strip().replace(' ', '_') for s in symptoms_input]
+    else:
+        user_symptoms = [s.strip().replace(' ', '_') for s in symptoms_input.split(',')]
     
     input_data = {symptom: [0] for symptom in symptom_columns}
     for symptom in user_symptoms:
@@ -98,6 +102,16 @@ def diagnose():
         "recommendations": recommendations
     }
     return jsonify(final_response)
+
+# Health check endpoint
+@app.route('/', methods=['GET'])
+def health_check():
+    return jsonify({
+        "status": "ok", 
+        "message": "PrescribeRight Model Backend is running ✅",
+        "endpoints": ["/diagnose"],
+        "port": 3000
+    })
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
