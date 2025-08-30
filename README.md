@@ -115,10 +115,10 @@ Step 2: Set up Backend (Model)
 cd model
 python -m venv venv
 
-# Windows
+Windows
 .\venv\Scripts\activate
 
-# macOS/Linux
+macOS/Linux
 source venv/bin/activate
 
 pip install -r requirements.txt
@@ -131,10 +131,10 @@ Step 3: Set up Backend (Chatbot)
 cd chatbot
 python -m venv venv
 
-# Windows
+Windows
 .\venv\Scripts\activate
 
-# macOS/Linux
+macOS/Linux
 source venv/bin/activate
 
 pip install -r requirements.txt
