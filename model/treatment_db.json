@@ -1,0 +1,1027 @@
+{
+  "Fungal infection": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Clotrimazole",
+          "class": "Topical Antifungal"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Application",
+            "priority": 10,
+            "conditions": {
+              "min_age": 2
+            },
+            "dosage": "Apply a thin layer to the affected area 2-3 times daily for 2-4 weeks."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Fluconazole",
+          "class": "Systemic Antifungal"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for severe or widespread infection",
+            "priority": 5,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "150mg orally once per week for 2-4 weeks. Must be prescribed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Allergy": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Cetirizine",
+          "class": "Antihistamine"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult",
+            "priority": 10,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "10mg orally once daily as needed."
+          },
+          {
+            "description": "Pediatric (6-12 years)",
+            "priority": 10,
+            "conditions": {
+              "min_age": 6,
+              "max_age": 12
+            },
+            "dosage": "5mg to 10mg orally once daily as needed."
+          }
+        ]
+      }
+    ]
+  },
+  "GERD": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Omeprazole",
+          "class": "Proton Pump Inhibitor (PPI)"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "20mg orally once daily, 30 minutes before the first meal, for 4-8 weeks. Consult a doctor for long-term use."
+          }
+        ]
+      }
+    ]
+  },
+  "Chronic cholestasis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Ursodeoxycholic acid",
+          "class": "Bile Acid"
+        },
+        "dosage_rules": [
+          {
+            "description": "Weight-based Adult Dosage",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "13-15 mg/kg/day orally in divided doses. Must be managed by a specialist."
+          }
+        ]
+      }
+    ]
+  },
+  "Drug Reaction": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Diphenhydramine",
+          "class": "Antihistamine"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for mild reaction",
+            "priority": 10,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "25-50mg orally every 6-8 hours as needed. May cause significant drowsiness."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Prednisone",
+          "class": "Corticosteroid"
+        },
+        "dosage_rules": [
+          {
+            "description": "For severe reaction",
+            "priority": 5,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "Dosage varies widely based on severity. Must be prescribed and tapered by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Peptic ulcer diseae": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Triple Therapy (Amoxicillin, Clarithromycin, Omeprazole)",
+          "class": "Antibiotic + PPI"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for H. pylori",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["clarithromycin_resistance"]
+            },
+            "dosage": "A standard 14-day course with all three medications as prescribed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "AIDS": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Antiretroviral Therapy (ART)",
+          "class": "Combination Antiretroviral"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard of Care",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "A complex, lifelong combination of drugs (e.g., Biktarvy, Triumeq) that must be prescribed and managed by an infectious disease specialist."
+          }
+        ]
+      }
+    ]
+  },
+  "Diabetes ": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Metformin",
+          "class": "Biguanide"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for Type 2 Diabetes",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["severe_renal_impairment"]
+            },
+            "dosage": "Starting dose 500mg orally once or twice daily with meals, titrated by a doctor."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Insulin",
+          "class": "Hormone"
+        },
+        "dosage_rules": [
+          {
+            "description": "For Type 1 and advanced Type 2 Diabetes",
+            "priority": 5,
+            "conditions": {},
+            "dosage": "Dosage is highly individualized based on blood sugar levels and must be managed by a doctor or endocrinologist."
+          }
+        ]
+      }
+    ]
+  },
+  "Gastroenteritis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Oral Rehydration Salts (ORS)",
+          "class": "Electrolyte Solution"
+        },
+        "dosage_rules": [
+          {
+            "description": "All Ages",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Sip frequently throughout the day to prevent dehydration. Follow package instructions."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Loperamide",
+          "class": "Antidiarrheal"
+        },
+        "dosage_rules": [
+          {
+            "description": "Adults for non-infectious diarrhea",
+            "priority": 5,
+            "conditions": {
+              "min_age": 12,
+              "contraindicated_conditions": ["bloody_stool", "high_fever"]
+            },
+            "dosage": "4mg initially, then 2mg after each loose stool. Do not exceed 8mg per day."
+          }
+        ]
+      }
+    ]
+  },
+  "Bronchial Asthma": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Albuterol (Salbutamol)",
+          "class": "Short-Acting Beta Agonist (SABA)"
+        },
+        "dosage_rules": [
+          {
+            "description": "Rescue Inhaler for all ages",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "1-2 puffs from an inhaler every 4-6 hours as needed for acute symptoms."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Fluticasone",
+          "class": "Inhaled Corticosteroid (ICS)"
+        },
+        "dosage_rules": [
+          {
+            "description": "Maintenance therapy for persistent asthma",
+            "priority": 5,
+            "conditions": {
+              "min_age": 4
+            },
+            "dosage": "Dosage varies by device and severity. Must be prescribed for daily use by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Hypertension ": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Lisinopril",
+          "class": "ACE Inhibitor"
+        },
+        "dosage_rules": [
+          {
+            "description": "Patient with Kidney Disease",
+            "priority": 1,
+            "conditions": {
+              "min_age": 18,
+              "health_conditions": ["chronic_kidney_disease"]
+            },
+            "dosage": "Lower starting dose (e.g., 2.5mg to 5mg once daily). Must be managed by a doctor."
+          },
+          {
+            "description": "Standard Adult Female (Not Pregnant)",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "gender": "female",
+              "contraindicated_conditions": ["pregnancy"]
+            },
+            "dosage": "Initial dose of 10mg orally once daily. Maintenance: 20-40mg daily. Must be prescribed by a doctor."
+          },
+          {
+            "description": "Standard Adult",
+            "priority": 15,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "Initial dose of 10mg orally once daily. Maintenance: 20-40mg daily. Must be prescribed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Migraine": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Sumatriptan",
+          "class": "Triptan"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for acute migraine",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["uncontrolled_hypertension", "heart_disease"]
+            },
+            "dosage": "50-100mg orally at the onset of attack. May repeat once after 2 hours if needed. Prescription required."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Ibuprofen",
+          "class": "NSAID"
+        },
+        "dosage_rules": [
+          {
+            "description": "Adult for mild to moderate migraine",
+            "priority": 15,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "400-800mg at the onset of symptoms. Take with food."
+          }
+        ]
+      }
+    ]
+  },
+  "Cervical spondylosis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Ibuprofen",
+          "class": "NSAID"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for pain and inflammation",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["peptic_ulcer_disease", "kidney_disease"]
+            },
+            "dosage": "400-600mg orally every 6-8 hours with food as needed."
+          }
+        ]
+      }
+    ]
+  },
+  "Paralysis (brain hemorrhage)": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Emergency Medical Intervention",
+          "class": "Critical Care"
+        },
+        "dosage_rules": [
+          {
+            "description": "Medical Emergency",
+            "priority": 1,
+            "conditions": {},
+            "dosage": "This is a medical emergency requiring immediate hospitalization. Treatment involves managing blood pressure and intracranial pressure under specialist care."
+          }
+        ]
+      }
+    ]
+  },
+  "Jaundice": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Treatment of Underlying Cause",
+          "class": "Varies"
+        },
+        "dosage_rules": [
+          {
+            "description": "Symptom Management",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Jaundice is a symptom. Treatment is directed at the underlying cause (e.g., hepatitis, gallstones) and must be determined by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Malaria": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Artemether-lumefantrine",
+          "class": "Antimalarial"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard treatment in many regions",
+            "priority": 10,
+            "conditions": {
+              "min_weight_kg": 5
+            },
+            "dosage": "A 3-day course of tablets with dosage based on weight. Must be prescribed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Chicken pox": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Acyclovir",
+          "class": "Antiviral"
+        },
+        "dosage_rules": [
+          {
+            "description": "Adult or immunocompromised patient",
+            "priority": 5,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "800mg orally 4-5 times daily for 5-7 days. Most effective if started within 24 hours of rash onset. Prescription required."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Paracetamol",
+          "class": "Analgesic"
+        },
+        "dosage_rules": [
+          {
+            "description": "Fever and pain relief for all ages",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Use age and weight-appropriate dosing as per package instructions to manage fever and discomfort."
+          }
+        ]
+      }
+    ]
+  },
+  "Dengue": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Paracetamol (Acetaminophen)",
+          "class": "Analgesic"
+        },
+        "dosage_rules": [
+          {
+            "description": "Fever and pain relief",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Use age and weight-appropriate dosing. DO NOT use NSAIDs like Ibuprofen or Aspirin as they increase bleeding risk."
+          }
+        ]
+      }
+    ]
+  },
+  "Typhoid": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Ciprofloxacin",
+          "class": "Fluoroquinolone Antibiotic"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["fluoroquinolone_resistance"]
+            },
+            "dosage": "500mg orally twice daily for 7-14 days. Must be prescribed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "hepatitis A": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Supportive Care",
+          "class": "Non-pharmacological"
+        },
+        "dosage_rules": [
+          {
+            "description": "Symptom Management",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "No specific medication. Treatment involves rest, adequate nutrition, and fluid intake to manage symptoms. Avoid alcohol."
+          }
+        ]
+      }
+    ]
+  },
+  "Hepatitis B": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Tenofovir",
+          "class": "Antiviral"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for chronic Hepatitis B",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "300mg orally once daily. Lifelong therapy managed by a specialist."
+          }
+        ]
+      }
+    ]
+  },
+  "Hepatitis C": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Direct-Acting Antivirals (DAAs)",
+          "class": "Antiviral"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Curative Therapy",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "Specific combination (e.g., Sofosbuvir/Velpatasvir) taken daily for 8-12 weeks. Prescribed and managed by a specialist."
+          }
+        ]
+      }
+    ]
+  },
+  "Hepatitis D": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Pegylated interferon alfa-2a",
+          "class": "Antiviral"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Therapy",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "Administered by weekly injection for at least 48 weeks. Managed by a specialist."
+          }
+        ]
+      }
+    ]
+  },
+  "Hepatitis E": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Supportive Care",
+          "class": "Non-pharmacological"
+        },
+        "dosage_rules": [
+          {
+            "description": "Symptom Management",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Usually self-resolving. Treatment involves rest, nutrition, and hydration. Avoid alcohol."
+          }
+        ]
+      }
+    ]
+  },
+  "Alcoholic hepatitis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Abstinence from Alcohol",
+          "class": "Lifestyle Modification"
+        },
+        "dosage_rules": [
+          {
+            "description": "Primary Treatment",
+            "priority": 1,
+            "conditions": {},
+            "dosage": "Complete and permanent cessation of alcohol consumption is the most critical intervention."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Prednisolone",
+          "class": "Corticosteroid"
+        },
+        "dosage_rules": [
+          {
+            "description": "For severe cases",
+            "priority": 5,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "Prescribed in a hospital setting to reduce liver inflammation. Managed by a specialist."
+          }
+        ]
+      }
+    ]
+  },
+  "Tuberculosis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "RIPE Therapy (Rifampin, Isoniazid, Pyrazinamide, Ethambutol)",
+          "class": "Combination Antibiotic"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Multi-Drug Course",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "A 6-month, multi-drug regimen with dosages based on body weight. Must be strictly followed and managed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Common Cold": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Ibuprofen",
+          "class": "NSAID"
+        },
+        "dosage_rules": [
+          {
+            "description": "Adult for aches and fever",
+            "priority": 10,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "200-400mg every 4-6 hours with food."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Paracetamol",
+          "class": "Analgesic"
+        },
+        "dosage_rules": [
+           {
+            "description": "Children (1-12 years)",
+            "conditions": {
+              "min_age": 1,
+              "max_age": 12
+            },
+            "dosage": "10-15 mg per kg of body weight, every 4-6 hours. Do not exceed 4 doses in 24 hours."
+          }
+        ]
+      }
+    ]
+  },
+  "Pneumonia": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Amoxicillin",
+          "class": "Penicillin antibiotic"
+        },
+        "dosage_rules": [
+          {
+            "description": "Pediatric Patient (under 40kg)",
+            "priority": 1,
+            "conditions": {
+              "max_age": 18,
+              "max_weight_kg": 40
+            },
+            "dosage": "90 mg/kg/day in 2 divided doses. Must be prescribed by a pediatrician."
+          },
+          {
+            "description": "Standard Adult",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18
+            },
+            "dosage": "500mg to 875mg orally every 12 hours for 5-7 days. Must be prescribed by a doctor."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Azithromycin",
+          "class": "Macrolide antibiotic"
+        },
+        "dosage_rules": [
+          {
+            "description": "Adult with Penicillin Allergy",
+            "priority": 2,
+            "conditions": {
+              "min_age": 18,
+              "allergies": ["penicillin"]
+            },
+            "dosage": "500mg orally on day 1, followed by 250mg once daily for 4 days. Must be prescribed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Dimorphic hemmorhoids(piles)": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Hydrocortisone Cream",
+          "class": "Topical Corticosteroid"
+        },
+        "dosage_rules": [
+          {
+            "description": "For itching and inflammation",
+            "priority": 10,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "Apply a thin layer to the affected area up to 4 times daily, especially after bowel movements."
+          }
+        ]
+      }
+    ]
+  },
+  "Heart attack": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Aspirin",
+          "class": "Antiplatelet"
+        },
+        "dosage_rules": [
+          {
+            "description": "Immediate action for suspected heart attack",
+            "priority": 1,
+            "conditions": {},
+            "dosage": "Chew 162 to 325 mg of a non-enteric-coated aspirin immediately while waiting for emergency services."
+          }
+        ]
+      }
+    ]
+  },
+  "Varicose veins": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Compression Stockings",
+          "class": "Medical Device"
+        },
+        "dosage_rules": [
+          {
+            "description": "First-line management",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Wear properly fitted compression stockings daily to improve blood flow and reduce swelling."
+          }
+        ]
+      }
+    ]
+  },
+  "Hypothyroidism": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Levothyroxine",
+          "class": "Thyroid Hormone Replacement"
+        },
+        "dosage_rules": [
+          {
+            "description": "Lifelong Replacement Therapy",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Dosage is highly individualized based on TSH lab results. Take once daily on an empty stomach, 30-60 minutes before breakfast. Managed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Hyperthyroidism": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Methimazole",
+          "class": "Antithyroid Agent"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["pregnancy"]
+            },
+            "dosage": "Dosage varies and is managed by an endocrinologist based on thyroid function tests."
+          }
+        ]
+      }
+    ]
+  },
+  "Hypoglycemia": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Glucose Tablets",
+          "class": "Fast-acting Carbohydrate"
+        },
+        "dosage_rules": [
+          {
+            "description": "Immediate treatment for low blood sugar",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Consume 15-20 grams of glucose (typically 3-4 tablets). Recheck blood sugar in 15 minutes and repeat if necessary."
+          }
+        ]
+      }
+    ]
+  },
+  "Osteoarthristis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Acetaminophen",
+          "class": "Analgesic"
+        },
+        "dosage_rules": [
+          {
+            "description": "First-line pain relief",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["severe_liver_disease"]
+            },
+            "dosage": "Up to 1000mg every 6 hours as needed. Do not exceed 3000mg in 24 hours."
+          }
+        ]
+      }
+    ]
+  },
+  "Arthritis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Naproxen",
+          "class": "NSAID"
+        },
+        "dosage_rules": [
+          {
+            "description": "For pain and inflammation",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "contraindicated_conditions": ["peptic_ulcer_disease", "kidney_disease"]
+            },
+            "dosage": "220mg orally twice daily with food as needed."
+          }
+        ]
+      }
+    ]
+  },
+  "(vertigo) Paroymsal  Positional Vertigo": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Epley Maneuver",
+          "class": "Canalith Repositioning Procedure"
+        },
+        "dosage_rules": [
+          {
+            "description": "Primary Treatment",
+            "priority": 1,
+            "conditions": {},
+            "dosage": "A series of head movements performed by a trained professional to treat BPPV. Not a medication."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Meclizine",
+          "class": "Antihistamine"
+        },
+        "dosage_rules": [
+          {
+            "description": "For severe dizziness",
+            "priority": 10,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "25mg orally 1-2 times daily as needed for symptom relief."
+          }
+        ]
+      }
+    ]
+  },
+  "Acne": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Benzoyl Peroxide",
+          "class": "Topical Antimicrobial"
+        },
+        "dosage_rules": [
+          {
+            "description": "For mild to moderate acne",
+            "priority": 10,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "Apply a thin layer of 2.5% or 5% gel/cream to affected areas once daily."
+          }
+        ]
+      },
+      {
+        "medication_info": {
+          "name": "Tretinoin",
+          "class": "Topical Retinoid"
+        },
+        "dosage_rules": [
+          {
+            "description": "For moderate to severe acne",
+            "priority": 5,
+            "conditions": {
+              "min_age": 12,
+              "contraindicated_conditions": ["pregnancy"]
+            },
+            "dosage": "Prescription only. Apply a pea-sized amount to the entire face at night. Use sunscreen daily."
+          }
+        ]
+      }
+    ]
+  },
+  "Urinary tract infection": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Trimethoprim/sulfamethoxazole",
+          "class": "Antibiotic"
+        },
+        "dosage_rules": [
+          {
+            "description": "Standard Adult for Uncomplicated UTI",
+            "priority": 10,
+            "conditions": {
+              "min_age": 18,
+              "allergies": ["sulfa"]
+            },
+            "dosage": "One double-strength tablet twice daily for 3 days. Must be prescribed by a doctor."
+          }
+        ]
+      }
+    ]
+  },
+  "Psoriasis": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Betamethasone",
+          "class": "Topical Corticosteroid"
+        },
+        "dosage_rules": [
+          {
+            "description": "For mild to moderate plaque psoriasis",
+            "priority": 10,
+            "conditions": {
+              "min_age": 12
+            },
+            "dosage": "Apply a thin layer to affected skin once or twice daily. Prescription strength varies."
+          }
+        ]
+      }
+    ]
+  },
+  "Impetigo": {
+    "recommended_medications": [
+      {
+        "medication_info": {
+          "name": "Mupirocin",
+          "class": "Topical Antibiotic"
+        },
+        "dosage_rules": [
+          {
+            "description": "For localized impetigo",
+            "priority": 10,
+            "conditions": {},
+            "dosage": "Apply a small amount of ointment to the affected area three times daily for 7-10 days."
+          }
+        ]
+      }
+    ]
+  }
+}

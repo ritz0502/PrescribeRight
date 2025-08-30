@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+// import Navbar from "../components/Navbar";
+// import Footer from "../components/Footer";
 import '../index.css';
 import './disclaimer.css';
 import disclaimerImage from '../assets/disclaimer.png'; // Import your image here
@@ -8,7 +8,7 @@ import disclaimerImage from '../assets/disclaimer.png'; // Import your image her
 const DisclaimerPage = () => {
     return (
         <div className="disclaimer-body">
-            <Navbar activePage="Disclaimer" />
+            {/* <Navbar activePage="Disclaimer" /> */}
             <div className="disclaimer-container">
                 <h1 className="disclaimer-title">Disclaimer</h1>
                 <p className="disclaimer-text">
@@ -21,7 +21,7 @@ const DisclaimerPage = () => {
                     <img src={disclaimerImage} alt="Medical Disclaimer" className="disclaimer-image" />
                 </div>
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

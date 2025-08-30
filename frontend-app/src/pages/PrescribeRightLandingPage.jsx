@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import heroBg from './assets/herobg.png';
+import heroBg from '../assets/herobg.png';
 import Spline from '@splinetool/react-spline';
-import Features from './components/Features';
+import Features from '../components/Features';
 
-import './styles.css';
+import '../styles.css';
 
 const PrescribeRightLandingPage = () => {
     const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -39,11 +37,9 @@ const PrescribeRightLandingPage = () => {
         }, 4000);
         return () => clearInterval(interval);
     }, [testimonials.length]);
-
+    
     return (
         <div className="landing-page-body">
-            <Navbar />
-
             <section id="hero" className="hero-section">
                 <div className="hero-overlay"></div>
                 <div className="hero-content-container">
@@ -116,8 +112,6 @@ const PrescribeRightLandingPage = () => {
                     ))}
                 </div>
             </section>
-
-            <Footer />
         </div>
     );
 };
