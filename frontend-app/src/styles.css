@@ -123,15 +123,28 @@
     text-align: center;
 }
 
-.section-title {
+/* .section-title {
     font-family: "Lato", sans-serif;
     font-weight: 600;
+    font-size: 10rem;
     color: var(--text-primary);
     margin-bottom: 0.75rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     justify-content: center;
+} */
+
+.section-title {
+    font-family: "Inter", sans-serif;
+    font-size: 2rem !important;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .features-grid {
