@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import './ChatBot.css';
+import "./ChatBot.css";
 
 export default function ChatBot() {
-  const [sid] = useState(() => crypto.randomUUID());
   const [msgs, setMsgs] = useState([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -13,15 +12,23 @@ export default function ChatBot() {
   useEffect(() => {
     // Small delay to ensure DOM is updated
     const timer = setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ 
+      messagesEndRef.current?.scrollIntoView({
         behavior: "smooth",
         block: "end",
-        inline: "nearest"
+        inline: "nearest",
       });
     }, 100);
-    
+
     return () => clearTimeout(timer);
   }, [msgs]);
+
+  // Helper function to get current timestamp
+  const getTimestamp = () => {
+    return new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  };
 
   // Focus input on component mount
   useEffect(() => {
@@ -32,10 +39,10 @@ export default function ChatBot() {
   const send = async (body) => {
     setIsLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/chat", {
+      const res = await fetch("http://127.0.0.1:5000/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: sid, ...body }),
+        body: JSON.stringify({ message: body.message }),
       });
 
       if (!res.ok) {
@@ -44,23 +51,38 @@ export default function ChatBot() {
 
       const msg = await res.json();
 
+      // Handle different response types from your chatbot backend
+      let messageContent = msg.message;
+      let messageType = "text";
+
+      if (msg.type === "prediction") {
+        messageType = "prediction";
+        messageContent = msg.message; // This contains the full prediction data
+      } else if (msg.type === "question") {
+        messageType = "text";
+        messageContent = msg.message;
+      }
+
       setMsgs((m) => [
         ...m,
         {
           role: "bot",
-          type: msg.type || "text",
-          content: msg.message,
+          type: messageType,
+          content: messageContent,
           state: msg.state,
+          timestamp: getTimestamp(),
         },
       ]);
     } catch (err) {
       console.error("Error sending message:", err);
       setMsgs((m) => [
         ...m,
-        { 
-          role: "bot", 
-          type: "error", 
-          content: "⚠️ Unable to connect to server. Please check your connection and try again." 
+        {
+          role: "bot",
+          type: "error",
+          content:
+            "⚠️ Unable to connect to server. Please check if the chatbot backend is running on port 5000 and try again.",
+          timestamp: getTimestamp(),
         },
       ]);
     } finally {
@@ -77,25 +99,33 @@ export default function ChatBot() {
     const text = input.trim();
     if (!text || isLoading) return;
 
-    setMsgs((m) => [...m, { role: "user", type: "text", content: text }]);
+    setMsgs((m) => [
+      ...m,
+      {
+        role: "user",
+        type: "text",
+        content: text,
+        timestamp: getTimestamp(),
+      },
+    ]);
     setInput("");
-    
+
     // Reset textarea height
     if (inputRef.current) {
-      inputRef.current.style.height = 'auto';
+      inputRef.current.style.height = "auto";
     }
-    
+
     send({ message: text });
   };
 
   // Handle textarea auto-resize
   const handleInputChange = (e) => {
     setInput(e.target.value);
-    
+
     // Auto-resize textarea
     const textarea = e.target;
-    textarea.style.height = 'auto';
-    textarea.style.height = Math.min(textarea.scrollHeight, 128) + 'px';
+    textarea.style.height = "auto";
+    textarea.style.height = Math.min(textarea.scrollHeight, 128) + "px";
   };
 
   return (
@@ -104,9 +134,7 @@ export default function ChatBot() {
         {/* Header */}
         <div className="chat-header">
           <div className="header-content">
-            <div className="header-icon">
-              🩺
-            </div>
+            <div className="header-icon">🩺</div>
             <div>
               <h1 className="header-title">Health Assistant</h1>
               <p className="header-subtitle">
@@ -120,22 +148,22 @@ export default function ChatBot() {
         <div className="messages-container">
           {msgs.length === 0 && (
             <div className="welcome-message">
-              <div className="welcome-icon">
-                💬
-              </div>
+              <div className="welcome-icon">💬</div>
               <h3 className="welcome-title">
                 Welcome to Your Health Assistant
               </h3>
               <p className="welcome-subtitle">
-                Describe your symptoms or health concerns, and I'll provide personalized guidance and recommendations based on your information.
+                Describe your symptoms or health concerns, and I'll provide
+                personalized guidance and recommendations based on your
+                information.
               </p>
             </div>
           )}
-          
+
           {msgs.map((m, i) => (
             <Message key={i} m={m} />
           ))}
-          
+
           {isLoading && (
             <div className="typing-indicator">
               <div className="typing-bubble">
@@ -148,7 +176,7 @@ export default function ChatBot() {
               </div>
             </div>
           )}
-          
+
           <div ref={messagesEndRef} />
         </div>
 
@@ -161,7 +189,7 @@ export default function ChatBot() {
                 value={input}
                 onChange={handleInputChange}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
+                  if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     e.stopPropagation();
                     onSubmit();
@@ -210,13 +238,16 @@ function Message({ m }) {
           <div className="prediction-header">
             <div className="prediction-icon">🧾</div>
             <h4 className="prediction-title">Diagnosis Result</h4>
+            {m.timestamp && (
+              <span className="message-timestamp">{m.timestamp}</span>
+            )}
           </div>
 
           <div className="diagnosis-info">
             <div className="diagnosis-disease">
               <strong>Disease:</strong> {predicted_disease}
             </div>
-            
+
             {recommendations?.description && (
               <p className="diagnosis-description">
                 <strong>Description:</strong> {recommendations.description}
@@ -249,8 +280,8 @@ function Message({ m }) {
                   <li key={i} className="section-item medication-item">
                     <div>
                       <span className="medication-name">{med.name}</span>{" "}
-                      <span className="medication-class">({med.class})</span>{" "}
-                      — <span className="medication-dosage">{med.dosage}</span>
+                      <span className="medication-class">({med.class})</span> —{" "}
+                      <span className="medication-dosage">{med.dosage}</span>
                     </div>
                     {med.reasoning && (
                       <div className="medication-reasoning">
@@ -295,8 +326,8 @@ function Message({ m }) {
 
           {userInput && (
             <div className="user-info">
-              <span className="user-info-label">Your Information:</span>{" "}
-              Age {userInput?.age || "N/A"}, Gender {userInput?.gender || "N/A"}
+              <span className="user-info-label">Your Information:</span> Age{" "}
+              {userInput?.age || "N/A"}, Gender {userInput?.gender || "N/A"}
               {userInput?.symptoms?.length > 0 && (
                 <>, Symptoms: {userInput.symptoms.join(", ")}</>
               )}
@@ -309,11 +340,21 @@ function Message({ m }) {
 
   // Regular text messages
   return (
-    <div className={`message ${isUser ? 'user' : 'bot'}`}>
-      <div className={`message-bubble ${isUser ? 'user' : 'bot'} ${isError ? 'error' : ''}`}>
+    <div className={`message ${isUser ? "user" : "bot"}`}>
+      <div
+        className={`message-bubble ${isUser ? "user" : "bot"} ${
+          isError ? "error" : ""
+        }`}
+      >
         {typeof m.content === "string"
           ? m.content
           : JSON.stringify(m.content, null, 2)}
+        {m.timestamp && m.role === "user" && (
+          <span className="message-timestamp">{m.timestamp}</span>
+        )}
+        {m.timestamp && m.role === "bot" && (
+          <span className="chat-timestamp">{m.timestamp}</span>
+        )}
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
-# Conversation memory
+# Conversation memory (for now, single-user only)
 user_context = {}
 pending_slot = None   # track what we asked last
 
@@ -35,7 +35,9 @@ def chat():
         user_text = data.get("message", "")
         print("User said:", user_text)
 
-        # If we were waiting for a specific slot, try to fill it directly
+        # --------------------------
+        # If bot was waiting for a specific slot → parse directly
+        # --------------------------
         if pending_slot:
             if pending_slot == "age":
                 try:
@@ -56,14 +58,27 @@ def chat():
                     user_context["gender"] = "female"
             pending_slot = None  # reset after filling
 
-        # Also run NER to catch multiple things if user gives long sentence
+        # --------------------------
+        # Run NER to catch multiple things in free text
+        # --------------------------
         ai_result = ai_agent(user_text)
         slots = ai_result.get("slots", {})
-        user_context.update({k: v for k, v in slots.items() if v})
 
-        # Check missing slots
+        # Merge symptoms instead of overwriting
+        if "symptoms" in slots and slots["symptoms"]:
+            old_symptoms = user_context.get("symptoms", [])
+            merged = list(set(old_symptoms + slots["symptoms"]))
+            user_context["symptoms"] = merged
+
+        # Update other slots normally
+        for k, v in slots.items():
+            if v and k != "symptoms":
+                user_context[k] = v
+
+        # --------------------------
+        # Check for missing slots
+        # --------------------------
         missing_slots = [s for s in REQUIRED_SLOTS if not user_context.get(s)]
-
         if missing_slots:
             next_slot = missing_slots[0]
             pending_slot = next_slot  # remember what we’re asking
@@ -76,7 +91,10 @@ def chat():
             }
             return jsonify({"type": "question", "message": questions[next_slot]})
 
-        # All info available → Predict disease
+        # --------------------------
+        # All required info is available → Predict disease
+        # (Auto re-run prediction if new symptoms are added later)
+        # --------------------------
         symptoms_str = ", ".join(user_context["symptoms"])
         predicted_disease = predict_disease(symptoms_str)
 
@@ -96,9 +114,17 @@ def chat():
             "recommendations": recommendations
         }
 
-        return jsonify({"type": "prediction", "message": final_response})
+        return jsonify({
+            "type": "prediction",
+            "message": final_response,
+            "note": "Updated with latest symptoms and info."
+        })
 
     except Exception as e:
         import traceback
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
