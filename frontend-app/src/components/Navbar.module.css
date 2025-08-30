@@ -24,6 +24,13 @@
     cursor: pointer;
 }
 
+.logo a {
+    text-decoration: none; /* Remove underline from the logo link */
+    color: inherit; /* Ensure the link inherits the logo color */
+    display: flex;
+    align-items: center;
+}
+
 .logoImage {
     height: 40px;
     margin-right: 10px;
@@ -94,5 +101,13 @@
     /* Show the hamburger icon on small screens */
     .menuIcon {
         display: block;
+    }
+
+    .mobileMenu {
+        display: none; /* Keep the mobile menu hidden by default on mobile */
+    }
+
+    .mobileMenu.open {
+        display: flex; /* Show only when the 'open' class is present */
     }
 }
