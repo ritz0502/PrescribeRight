@@ -1,0 +1,12 @@
+# requirements.txt
+numpy
+flask
+python-dotenv
+pandas
+scikit-learn
+joblib
+google-generativeai
+langchain
+faiss-cpu
+sentence-transformers
+pypdf
