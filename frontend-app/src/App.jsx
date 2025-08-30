@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import PrescribeRightLandingPage from './pages/PrescribeRightLandingPage';
 import DisclaimerPage from './pages/DisclaimerPage';
 import ConsultationPage from './pages/ConsultationPage';
+import AboutUsPage from './pages/AboutUsPage';
 
 // Import your global layout CSS
 import './index.css';
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<PrescribeRightLandingPage />} />
             <Route path="/disclaimer" element={<DisclaimerPage />} />
             <Route path="/consultation" element={<ConsultationPage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
             
           </Routes>
         </main>

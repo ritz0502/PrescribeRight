@@ -1,0 +1,123 @@
+/* General body styling */
+.body {
+    background-color: #FFFFFF;
+    min-height: 100vh; /* Ensures the page is at least full height */
+    font-family: 'Open Sans', sans-serif;
+    color: #212121;
+    line-height: 1.6;
+    /* Added to fix the black strip issue by making the body a flex container */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+/* This container adds the gap and centers the main content */
+.contentContainer {
+    padding-top: 80px; /* Creates the gap from the Navbar */
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* Make this container grow to push the footer down */
+    flex-grow: 1;
+}
+
+.mainHeading {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: bold;
+    color: #2e005f;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Base section styling */
+.missionSection, .valuesSection, .technologySection {
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Specific section colors */
+.missionSection { background-color: #E8F5E8; }
+.valuesSection { background-color: #E3F2FD; }
+.technologySection { background-color: #F1F8E9; }
+
+/* Wrapper for text content to sit next to the image on large screens */
+.textWrapper {
+    max-width: 600px;
+}
+
+/* Titles */
+.missionTitle {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: bold;
+    color: #2E7D32;
+    margin-bottom: 1.5rem;
+    font-family: 'Lato', sans-serif;
+}
+.valuesTitle {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: bold;
+    color: #1565C0;
+    margin-bottom: 1.5rem;
+    font-family: 'Lato', sans-serif;
+}
+.technologyTitle {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: bold;
+    color: #388E3C;
+    margin-bottom: 1.5rem;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Text styles */
+.missionText { color: #388E3C; }
+.valuesText { color: #1976D2; }
+.valuesText strong { font-weight: bold; }
+.technologyText { color: #4CAF50; }
+
+.missionText, .valuesText, .technologyText {
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: 1.7;
+}
+
+/* Illustration containers */
+.illustrationContainer {
+    flex-shrink: 0;
+    width: 250px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+/* Image styling */
+.illustrationImage {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .mainHeading {
+        margin-top: 1rem;
+    }
+    .missionSection, .valuesSection, .technologySection {
+        flex-direction: column;
+        text-align: center;
+    }
+    .illustrationContainer {
+        margin: 2rem auto 0;
+        width: 150px;
+    }
+}
