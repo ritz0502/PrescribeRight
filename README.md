@@ -94,11 +94,13 @@ Backend (Chatbot)
 🔧 Getting Started
 
 Step 1: Clone the Repository
-git clone https://github.com/ritz0502/PrescribeRight.git
+```
+bash git clone https://github.com/ritz0502/PrescribeRight.git
 cd PrescribeRight
-
+```
 Step 2: Set up Backend (Model)
-cd model
+```
+bash cd model
 python -m venv venv
 
 Windows
@@ -109,11 +111,12 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 python app.py
-
+```
 
 👉 Backend server runs on http://127.0.0.1:3000
 
 Step 3: Set up Backend (Chatbot)
+```
 cd chatbot
 python -m venv venv
 
@@ -125,16 +128,16 @@ source venv/bin/activate
 
 pip install -r requirements.txt
 python app.py
-
+```
 
 👉 Chatbot server runs on http://127.0.0.1:3001
 
-Step 4: Run Frontend
+Step 4: Run the Frontend
+```
 cd frontend-app
 npm install
 npm run dev
-
-
+```
 👉 Frontend runs on http://localhost:5173
 
 # 📁 Project Structure
