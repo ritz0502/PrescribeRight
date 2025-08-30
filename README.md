@@ -1,41 +1,41 @@
-PrescribeRight: Your AI-Powered Health Assistant
+# PrescribeRight: Your AI-Powered Health Assistant
 
 💡 About the Project
-PrescribeRight is a full-stack web application that provides users with preliminary health insights and personalized care recommendations. It uses AI models to analyze symptoms and patient data, offering potential disease diagnoses, medication plans, and lifestyle advice.
+PrescribeRight is a full-stack AI-powered health assistant that provides preliminary health insights and personalized care recommendations. It analyzes symptoms and patient data to suggest potential disease diagnoses, medications, and lifestyle advice.
 
-The application has two main interaction modes:
+Interaction Modes:
 
-Guided Consultation: A step-by-step form for structured symptom input and detailed results display.
+Guided Consultation: Step-by-step AI-powered form for structured symptom input and results.
 
-AI Chatbot: An interactive chat interface where users can have a conversation with an NLP model, helping them understand possible diseases and prescribing appropriate medications.
+AI Chatbot: Conversational interface where the NLP model interacts with users to extract symptoms, understand diseases, and recommend medications.
 
-⚠️ Disclaimer: PrescribeRight is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare professional.
+⚠️ Disclaimer: PrescribeRight is for informational purposes only and is not a substitute for professional medical advice. Always consult a qualified healthcare professional.
 
-✨ Key Features
+# ✨ Key Features
 
-AI-Powered Symptom Analysis: Analyzes user-input symptoms to suggest potential medical conditions.
+AI-Powered Symptom Analysis: Extracts symptoms from user input to suggest potential conditions.
 
-Personalized Medication Recommendations: Suggests medications and correct dosages for detected diseases.
+Personalized Medication Recommendations: Suggests medicines with correct dosages for detected diseases.
 
-Interactive AI Chatbot: Conversational interface where the NLP chatbot interacts with the user to extract symptoms, understand the disease, and recommend medications.
+Interactive AI Chatbot: Conversational interface for intuitive, real-time health consultations.
 
-Guided Consultations Page: Structured AI-powered form where users can fill in symptoms and patient details to get disease and medication predictions.
+Guided Consultations Page: AI-powered form where users fill symptoms and patient details.
 
-Comprehensive Results Display: Shows detailed information including suggested medicines, dosage, and lifestyle advice.
+Comprehensive Results Display: Shows diseases, recommended medicines, dosage, and lifestyle advice.
 
 Responsive Design: Works seamlessly on desktop and mobile devices.
 
-🧠 Models Used
+# 🧠 Models Used
 
-PrescribeRight leverages state-of-the-art Hugging Face models for NLP and biomedical entity extraction, enabling accurate symptom understanding and disease prediction.
+PrescribeRight leverages Hugging Face models for NLP and biomedical entity extraction:
 
 1. General NLP & Text Processing
 
 Model: google/flan-t5-small
 
-Purpose: Handles text summarization, keyword extraction, and general text-to-text transformations.
+Purpose: Text summarization, keyword extraction, and text-to-text transformations.
 
-Use Case: Extracts key information from user input before passing it to the biomedical entity recognition model.
+Use Case: Extracts relevant keywords before biomedical entity recognition.
 
 Link: Hugging Face Model
 
@@ -43,35 +43,35 @@ Link: Hugging Face Model
 
 Model: d4data/biomedical-ner-all
 
-Purpose: Extracts biomedical entities such as diseases, symptoms, chemicals, treatments, and durations from text.
+Purpose: Extracts biomedical entities like diseases, symptoms, chemicals, treatments, and durations.
 
-Use Case: Identifies relevant medical entities from user inputs to populate slots like symptoms, duration, age, and severity.
+Use Case: Populates slots such as symptoms, duration, age, gender, and severity from user input.
 
 Link: Hugging Face Model
 
-3. How They Work Together
+3. Workflow Between Models
 
-google/flan-t5-small processes the user’s input, summarizing text and extracting keywords.
+google/flan-t5-small extracts keywords and summarizes user input.
 
-Extracted keywords are then fed into d4data/biomedical-ner-all for precise biomedical entity recognition.
+Keywords are passed to d4data/biomedical-ner-all for precise biomedical entity extraction.
 
-Identified entities are used by the backend to generate disease predictions and recommend appropriate medications with correct dosages.
+Extracted entities feed the backend for disease prediction and medication recommendation.
 
-🏗️ Workflow & Architecture
+# 🏗️ Workflow & Architecture
 
 PrescribeRight follows a streamlined AI-powered pipeline:
 
-Model Training (train.py) – Trains the AI model using symptom-disease-medication datasets (CSV) to learn accurate mappings.
+Model Training (train.py) – Trains AI model on symptom-disease-medication CSV datasets.
 
-Knowledge Base Construction (buildknowledge.py) – Converts the trained model outputs into a structured knowledge base for quick retrieval of diseases, symptoms, medications, and dosages.
+Knowledge Base Construction (buildknowledge.py) – Converts trained model outputs into a structured knowledge base for fast retrieval of diseases, symptoms, medicines, and dosages.
 
-Backend (app.py) – Loads the model and knowledge base, provides API endpoints, predicts diseases, suggests medications with proper dosage, and returns structured responses.
+Backend (app.py) – Loads model & knowledge base, exposes API endpoints, predicts diseases, suggests medications with proper dosage, and returns structured responses.
 
-Frontend (React.js) – Provides an interactive interface for guided consultations and chatbot interactions, sending user input to the backend and displaying AI-driven health insights.
+Frontend (React.js) – Interactive interface for guided consultations and chatbot, sending user input to the backend and displaying AI-driven health insights.
 
-Enhancements & Notes: Include architecture diagrams, sample API requests/responses, and screenshots to visualize the flow. Optionally, add logging, error handling, or multi-user session management for production-readiness.
+Enhancements: Architecture diagrams, API request/response examples, and screenshots can further improve clarity and usability.
 
-🚀 Technologies Used
+# 🚀 Technologies Used
 Frontend
 
 React.js
@@ -101,9 +101,9 @@ Flask
 🔧 Getting Started
 Prerequisites
 
-Node.js (v14 or higher)
+Node.js (v14+)
 
-Python (v3.8 or higher)
+Python (v3.8+)
 
 pip
 
@@ -111,47 +111,47 @@ Step 1: Clone the Repository
 git clone https://github.com/ritz0502/PrescribeRight.git
 cd PrescribeRight
 
-Step 2: Set up the Backend (Model)
+Step 2: Set up Backend (Model)
 cd model
 python -m venv venv
 
-# On Windows
+# Windows
 .\venv\Scripts\activate
 
-# On macOS/Linux
+# macOS/Linux
 source venv/bin/activate
 
 pip install -r requirements.txt
 python app.py
 
 
-👉 The backend server will run on http://127.0.0.1:3000
+👉 Backend server runs on http://127.0.0.1:3000
 
-Step 3: Set up the Backend (Chatbot)
+Step 3: Set up Backend (Chatbot)
 cd chatbot
 python -m venv venv
 
-# On Windows
+# Windows
 .\venv\Scripts\activate
 
-# On macOS/Linux
+# macOS/Linux
 source venv/bin/activate
 
 pip install -r requirements.txt
 python app.py
 
 
-👉 The chatbot server will run on http://127.0.0.1:3001
+👉 Chatbot server runs on http://127.0.0.1:3001
 
-Step 4: Run the Frontend
+Step 4: Run Frontend
 cd frontend-app
 npm install
 npm run dev
 
 
-👉 The frontend will run on http://localhost:5173
+👉 Frontend runs on http://localhost:5173
 
-📁 Project Structure
+# 📁 Project Structure
 .
 ├── chatbot/            # NLP-based chatbot backend
 ├── model/              # AI model backend for predictions
