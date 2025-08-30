@@ -1,0 +1,42 @@
+# ---- Python ----
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pkl
+*.pickle
+
+# ---- Virtual environments ----
+env/
+venv/
+.venv/
+
+# ---- OS files ----
+.DS_Store
+Thumbs.db
+
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.swp
+
+# ---- Environment variables ----
+.env
+
+# ---- Logs ----
+*.log
+
+# ---- Model / data files ----
+/model/*.pkl
+/model/*.joblib
+/model/*.h5
+/model/*.onnx
+/model/*.csv
+/model/*.json
+
+# ---- Flask specific ----
+instance/
+*.db
+
+# ---- Cache ----
+.cache/
