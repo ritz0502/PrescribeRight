@@ -1,62 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';  // ✅ Import Link
 import logo from '../assets/logo.svg';
-import styles from './Navbar.module.css'; // Import the CSS module
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
-    const [activeSection, setActiveSection] = useState('home');
     const [hoveredLink, setHoveredLink] = useState(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const sections = ['hero', 'features', 'how-it-works', 'testimonials'];
-            const viewportHeight = window.innerHeight;
-
-            const currentSection = sections.find(sectionId => {
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    const rect = section.getBoundingClientRect();
-                    const sectionMidpoint = rect.top + rect.height / 2;
-                    const viewportMidTop = viewportHeight * 0.25;
-                    const viewportMidBottom = viewportHeight * 0.75;
-                    return sectionMidpoint >= viewportMidTop && sectionMidpoint <= viewportMidBottom;
-                }
-                return false;
-            });
-
-            if (currentSection) {
-                const sectionToLinkMap = {
-                    'hero': 'home',
-                    'features': 'consultation',
-                    'how-it-works': 'disclaimer',
-                    'testimonials': 'about-us'
-                };
-                setActiveSection(sectionToLinkMap[currentSection]);
-            } else {
-                setActiveSection('home');
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    const toggleMenu = () => {
-        setIsMenuOpen(prev => !prev);
-    };
-
-    const closeMenu = () => {
-        setIsMenuOpen(false);
-    };
+    const toggleMenu = () => setIsMenuOpen(prev => !prev);
+    const closeMenu = () => setIsMenuOpen(false);
 
     const getLinkClassName = (linkName) => {
-        const isActive = activeSection === linkName;
         const isHovered = hoveredLink === linkName;
-        return `${styles.navLink} ${isActive || isHovered ? styles.active : ''}`;
+        return `${styles.navLink} ${isHovered ? styles.active : ''}`;
     };
 
     return (
@@ -70,20 +26,22 @@ const Navbar = () => {
                 &#9776;
             </div>
 
+            {/* Desktop Nav */}
             <ul className={styles.navLinks}>
-                <li><a href="#hero" className={getLinkClassName('home')} onMouseEnter={() => setHoveredLink('home')} onMouseLeave={() => setHoveredLink(null)}>Home</a></li>
-                <li><a href="#features" className={getLinkClassName('consultation')} onMouseEnter={() => setHoveredLink('consultation')} onMouseLeave={() => setHoveredLink(null)}>Consultation</a></li>
-                <li><a href="#how-it-works" className={getLinkClassName('disclaimer')} onMouseEnter={() => setHoveredLink('disclaimer')} onMouseLeave={() => setHoveredLink(null)}>Disclaimer</a></li>
-                <li><a href="#testimonials" className={getLinkClassName('about-us')} onMouseEnter={() => setHoveredLink('about-us')} onMouseLeave={() => setHoveredLink(null)}>About Us</a></li>
-                <li><a href="#" className={getLinkClassName('contact-us')} onMouseEnter={() => setHoveredLink('contact-us')} onMouseLeave={() => setHoveredLink(null)}>Contact Us</a></li>
+                <li><Link to="/" className={getLinkClassName('home')} onMouseEnter={() => setHoveredLink('home')} onMouseLeave={() => setHoveredLink(null)}>Home</Link></li>
+                <li><Link to="/consultation" className={getLinkClassName('consultation')} onMouseEnter={() => setHoveredLink('consultation')} onMouseLeave={() => setHoveredLink(null)}>Consultation</Link></li>
+                <li><Link to="/disclaimer" className={getLinkClassName('disclaimer')} onMouseEnter={() => setHoveredLink('disclaimer')} onMouseLeave={() => setHoveredLink(null)}>Disclaimer</Link></li>
+                <li><Link to="/about" className={getLinkClassName('about-us')} onMouseEnter={() => setHoveredLink('about-us')} onMouseLeave={() => setHoveredLink(null)}>About Us</Link></li>
+                <li><Link to="/contact" className={getLinkClassName('contact-us')} onMouseEnter={() => setHoveredLink('contact-us')} onMouseLeave={() => setHoveredLink(null)}>Contact Us</Link></li>
             </ul>
 
+            {/* Mobile Nav */}
             <ul className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}>
-                <li><a href="#hero" onClick={closeMenu} className={getLinkClassName('home')}>Home</a></li>
-                <li><a href="#features" onClick={closeMenu} className={getLinkClassName('consultation')}>Consultation</a></li>
-                <li><a href="#how-it-works" onClick={closeMenu} className={getLinkClassName('disclaimer')}>Disclaimer</a></li>
-                <li><a href="#testimonials" onClick={closeMenu} className={getLinkClassName('about-us')}>About Us</a></li>
-                <li><a href="#" onClick={closeMenu} className={getLinkClassName('contact-us')}>Contact Us</a></li>
+                <li><Link to="/" onClick={closeMenu} className={getLinkClassName('home')}>Home</Link></li>
+                <li><Link to="/consultation" onClick={closeMenu} className={getLinkClassName('consultation')}>Consultation</Link></li>
+                <li><Link to="/disclaimer" onClick={closeMenu} className={getLinkClassName('disclaimer')}>Disclaimer</Link></li>
+                <li><Link to="/about" onClick={closeMenu} className={getLinkClassName('about-us')}>About Us</Link></li>
+                <li><Link to="/contact" onClick={closeMenu} className={getLinkClassName('contact-us')}>Contact Us</Link></li>
             </ul>
         </nav>
     );
