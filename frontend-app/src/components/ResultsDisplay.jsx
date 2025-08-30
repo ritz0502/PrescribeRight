@@ -1,40 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { mockGetDosage } from '../utils/mockApi';
+import React, { useState } from "react";
+// import { mockGetDosage } from '../utils/mockApi';
 
 const ResultsDisplay = ({ patientData, analysisResult, onRestart }) => {
-  const [dosageInfo, setDosageInfo] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const [dosageInfo, setDosageInfo] = useState(null);
+  // const [loading, setLoading] = useState(true);
   const [expandedSections, setExpandedSections] = useState({});
 
-  useEffect(() => {
-    const fetchDosage = async () => {
-      try {
-        const dosage = await mockGetDosage(patientData, analysisResult.analysisId);
-        setDosageInfo(dosage);
-      } catch (error) {
-        console.error('Error fetching dosage:', error);
-      }
-      setLoading(false);
-    };
+  // useEffect(() => {
+  //   const fetchDosage = async () => {
+  //     try {
+  //       const dosage = await mockGetDosage(patientData, analysisResult.analysisId);
+  //       setDosageInfo(dosage);
+  //     } catch (error) {
+  //       console.error('Error fetching dosage:', error);
+  //     }
+  //     setLoading(false);
+  //   };
 
-    fetchDosage();
-  }, [patientData, analysisResult]);
+  //   fetchDosage();
+  // }, [patientData, analysisResult]);
 
   const toggleSection = (section) => {
-    setExpandedSections(prev => ({
+    setExpandedSections((prev) => ({
       ...prev,
-      [section]: !prev[section]
+      [section]: !prev[section],
     }));
   };
 
-  if (loading) {
-    return (
-      <div className="section loading-section">
-        <div className="spinner"></div>
-        <p>Getting dosage information...</p>
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="section loading-section">
+  //       <div className="spinner"></div>
+  //       <p>Getting dosage information...</p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="section">
@@ -42,7 +42,7 @@ const ResultsDisplay = ({ patientData, analysisResult, onRestart }) => {
         <h2>Analysis Results</h2>
       </div>
 
-      {analysisResult.lowConfidence && (
+      {analysisResult?.lowConfidence && (
         <div className="warning-banner">
           <span className="warning-icon">⚠️</span>
           Please consult a healthcare provider. This result may not be accurate.
@@ -52,17 +52,21 @@ const ResultsDisplay = ({ patientData, analysisResult, onRestart }) => {
       <div className="results-grid">
         <div className="result-card">
           <h3>Predicted Condition</h3>
-          <p className="result-value">{analysisResult.predictedDisease}</p>
+          <p className="result-value">{analysisResult.predicted_disease}</p>
         </div>
 
         <div className="result-card">
           <h3>Recommended Medication</h3>
-          <p className="result-value">{analysisResult.recommendedMedication}</p>
+          <p className="result-value">
+            {analysisResult.recommendations.medication_plan[0].name}
+          </p>
         </div>
 
         <div className="result-card">
           <h3>Precise Dosage</h3>
-          <p className="result-value">{dosageInfo?.preciseDosage}</p>
+          <p className="result-value">
+            {analysisResult.recommendations.medication_plan[0].dosage}
+          </p>
         </div>
       </div>
 
@@ -70,17 +74,25 @@ const ResultsDisplay = ({ patientData, analysisResult, onRestart }) => {
         <div className="collapsible">
           <button
             className="collapsible-header"
-            onClick={() => toggleSection('precautions')}
+            onClick={() => toggleSection("precautions")}
           >
             <span>Precautions</span>
-            <span className={`arrow ${expandedSections.precautions ? 'expanded' : ''}`}>▼</span>
+            <span
+              className={`arrow ${
+                expandedSections.precautions ? "expanded" : ""
+              }`}
+            >
+              ▼
+            </span>
           </button>
           {expandedSections.precautions && (
             <div className="collapsible-content">
               <ul>
-                {dosageInfo?.precautions.map((precaution, index) => (
-                  <li key={index}>{precaution}</li>
-                ))}
+                {analysisResult.recommendations?.precautions.map(
+                  (precaution, index) => (
+                    <li key={index}>{precaution}</li>
+                  )
+                )}
               </ul>
             </div>
           )}
@@ -89,17 +101,25 @@ const ResultsDisplay = ({ patientData, analysisResult, onRestart }) => {
         <div className="collapsible">
           <button
             className="collapsible-header"
-            onClick={() => toggleSection('contraindications')}
+            onClick={() => toggleSection("contraindications")}
           >
-            <span>Contraindications</span>
-            <span className={`arrow ${expandedSections.contraindications ? 'expanded' : ''}`}>▼</span>
+            <span>Workouts</span>
+            <span
+              className={`arrow ${
+                expandedSections.contraindications ? "expanded" : ""
+              }`}
+            >
+              ▼
+            </span>
           </button>
           {expandedSections.contraindications && (
             <div className="collapsible-content">
               <ul>
-                {dosageInfo?.contraindications.map((contraindication, index) => (
-                  <li key={index}>{contraindication}</li>
-                ))}
+                {analysisResult.recommendations?.workouts.map(
+                  (workout, index) => (
+                    <li key={index}>{workout}</li>
+                  )
+                )}
               </ul>
             </div>
           )}
@@ -108,16 +128,22 @@ const ResultsDisplay = ({ patientData, analysisResult, onRestart }) => {
         <div className="collapsible">
           <button
             className="collapsible-header"
-            onClick={() => toggleSection('sideEffects')}
+            onClick={() => toggleSection("sideEffects")}
           >
-            <span>Side Effects</span>
-            <span className={`arrow ${expandedSections.sideEffects ? 'expanded' : ''}`}>▼</span>
+            <span>Diets</span>
+            <span
+              className={`arrow ${
+                expandedSections.sideEffects ? "expanded" : ""
+              }`}
+            >
+              ▼
+            </span>
           </button>
           {expandedSections.sideEffects && (
             <div className="collapsible-content">
               <ul>
-                {dosageInfo?.sideEffects.map((sideEffect, index) => (
-                  <li key={index}>{sideEffect}</li>
+                {analysisResult.recommendations?.diets.map((diet, index) => (
+                  <li key={index}>{diet}</li>
                 ))}
               </ul>
             </div>

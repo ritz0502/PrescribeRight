@@ -3,9 +3,11 @@ import pickle
 import numpy as np
 import pandas as pd
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 print("--- Initializing Final Backend Server ---")
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Load all components 
 try:
@@ -98,4 +100,4 @@ def diagnose():
     return jsonify(final_response)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
