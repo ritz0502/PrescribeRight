@@ -74,38 +74,24 @@ Enhancements: Architecture diagrams, API request/response examples, and screensh
 # 🚀 Technologies Used
 Frontend
 
-React.js
-
-React Router
-
-Vite
-
-CSS Modules
+- React.js
+- React Router
+- Vite
+- CSS Modules
 
 Backend (Model)
 
-Python
-
-Flask
-
-Pandas & NumPy
-
-Scikit-learn
+- Python
+- Flask
+- Pandas & NumPy
+- Scikit-learn
 
 Backend (Chatbot)
 
-Python
-
-Flask
+- Python
+- Flask
 
 🔧 Getting Started
-Prerequisites
-
-Node.js (v14+)
-
-Python (v3.8+)
-
-pip
 
 Step 1: Clone the Repository
 git clone https://github.com/ritz0502/PrescribeRight.git
