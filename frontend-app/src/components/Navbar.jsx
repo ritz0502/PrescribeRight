@@ -42,23 +42,23 @@ const Navbar = () => {
                     <Link to="/consultation" className={getLinkClassName('/consultation')} onMouseEnter={() => {}} onMouseLeave={() => {}}>Consultation</Link>
                 </li>
                 <li>
+                    <Link to="/chat-bot" className={getLinkClassName('/chat-bot')} onMouseEnter={() => {}} onMouseLeave={() => {}}>Chat Bot</Link>
+                </li>
+                <li>
                     <Link to="/disclaimer" className={getLinkClassName('/disclaimer')} onMouseEnter={() => {}} onMouseLeave={() => {}}>Disclaimer</Link>
                 </li>
                 <li>
                     <Link to="/about-us" className={getLinkClassName('/about-us')} onMouseEnter={() => {}} onMouseLeave={() => {}}>About Us</Link>
                 </li>
-                {/* <li>
-                    <Link to="/contact-us" className={getLinkClassName('/contact-us')} onMouseEnter={() => {}} onMouseLeave={() => {}}>Contact Us</Link>
-                </li> */}
             </ul>
 
             {/* Mobile Menu */}
             <ul className={`${styles.mobileMenu} ${isMenuOpen ? styles.open : ''}`}>
                 <li><Link to="/" onClick={closeMenu} className={getLinkClassName('/')}>Home</Link></li>
                 <li><Link to="/consultation" onClick={closeMenu} className={getLinkClassName('/consultation')}>Consultation</Link></li>
+                <li><Link to="/chat-bot" onClick={closeMenu} className={getLinkClassName('/chat-bot')}>Chat Bot</Link></li>
                 <li><Link to="/disclaimer" onClick={closeMenu} className={getLinkClassName('/disclaimer')}>Disclaimer</Link></li>
                 <li><Link to="/about-us" onClick={closeMenu} className={getLinkClassName('/about-us')}>About Us</Link></li>
-                {/* <li><Link to="/contact-us" onClick={closeMenu} className={getLinkClassName('/contact-us')}>Contact Us</Link></li> */}
             </ul>
         </nav>
     );

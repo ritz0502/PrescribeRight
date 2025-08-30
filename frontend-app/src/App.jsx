@@ -11,6 +11,7 @@ import ConsultationPage from './pages/ConsultationPage';
 import AboutUsPage from './pages/AboutUsPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsOfService from './pages/TermsOfService';
+import ChatBot from './pages/ChatBot'
 
 // Import your global layout CSS
 import './index.css';
@@ -26,6 +27,7 @@ function App() {
             <Route path="/" element={<PrescribeRightLandingPage />} />
             <Route path="/disclaimer" element={<DisclaimerPage />} />
             <Route path="/consultation" element={<ConsultationPage />} />
+            <Route path="/chat-bot" element={<ChatBot />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
