@@ -14,7 +14,7 @@ const PrivacyPolicyPage = () => {
         },
         container: {
             maxWidth: '800px',
-            margin: '5rem auto',
+            margin: '2rem auto',
             backgroundColor: '#FFFFFF',
             borderRadius: '20px',
             padding: '3rem',
