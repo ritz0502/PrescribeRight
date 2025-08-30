@@ -1,0 +1,98 @@
+/* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 5%;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Logo styling */
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #4FC3F7;
+    cursor: pointer;
+}
+
+.logoImage {
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Desktop navigation links */
+.navLinks {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Individual link styling */
+.navLink {
+    text-decoration: none;
+    color: #757575;
+    font-weight: 500; 
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.navLink.active,
+.navLink:hover {
+    color: #4FC3F7;
+}
+
+/* Hamburger menu icon */
+.menuIcon {
+    display: none; /* Hidden by default on desktop */
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4FC3F7;
+}
+
+/* Mobile menu container */
+.mobileMenu {
+    display: none; /* Always hidden unless toggled */
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust based on your navbar height */
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    gap: 1rem;
+    z-index: 998;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    list-style: none; /* This is key to remove the bullet points */
+}
+
+/* Class to show the mobile menu */
+.mobileMenu.open {
+    transform: translateY(0);
+    display: flex; /* Makes the menu visible */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    /* Hide desktop links on small screens */
+    .navLinks {
+        display: none;
+    }
+
+    /* Show the hamburger icon on small screens */
+    .menuIcon {
+        display: block;
+    }
+}
