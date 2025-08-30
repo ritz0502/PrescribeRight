@@ -91,11 +91,11 @@ const PrescribeRightLandingPage = () => {
             alignItems: 'center',
             padding: '2rem',
             paddingTop: '40px', // Space for fixed Navbar
-            marginBottom: '4rem',
-            borderRadius: '15px',
+            marginBottom: '0', // Reduced to remove gap
+            borderRadius: '0px',
             boxShadow: '0 5px 20px rgba(0,0,0,0.1)',
             maxWidth: '1200px',
-            margin: '4rem auto 4rem auto', // Centering and margin
+            margin: '4rem auto 0 auto', // Adjusted bottom margin
             overflow: 'hidden', // Prevent Spline overflow if it goes beyond bounds
             // Responsive styles for larger screens
             '@media (min-width: 768px)': {
@@ -189,7 +189,7 @@ const PrescribeRightLandingPage = () => {
             boxShadow: '0 4px 15px rgba(79, 195, 247, 0.3)'
         },
         featuresSection: {
-            padding: '4rem 2rem',
+            padding: '2rem 2rem 4rem 2rem', // Reduced top padding
             backgroundColor: '#FFFFFF',
             textAlign: 'center'
         },
