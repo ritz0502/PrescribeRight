@@ -138,7 +138,7 @@ npm run dev
 👉 Frontend runs on http://localhost:5173
 
 # 📁 Project Structure
-.
+```.
 ├── chatbot/            # NLP-based chatbot backend
 ├── model/              # AI model backend for predictions
 ├── frontend-app/       # React frontend
@@ -148,4 +148,4 @@ npm run dev
 │   │   ├── pages/
 │   │   └── ...
 │   └── ...
-└── README.md
+└── README.md```
